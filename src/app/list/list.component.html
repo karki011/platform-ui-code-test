@@ -1,4 +1,13 @@
 <div class="list-container">
   <h2>Providers</h2>
+  <div *ngFor="let provider of unselectedProviders" >
+  {{provider.name}}
+  <button (click)='addToSelectedProvider($event, provider )' type='button' >Save Provider</button>
+</div>
 
+<h2>Selected Providers</h2>
+  <div *ngFor="let provider of selectedProviders" >
+  {{provider.name}}
+  <button (click)='removedFromSelectedProvider($event, provider )' type='button' >X</button>
+</div>
 </div>

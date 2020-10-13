@@ -38,4 +38,37 @@ describe('ListComponent', () => {
       expect(component.selectedProviders.length).toEqual(0);
     });
   });
+
+  describe('Add provider to  selectedProviders',() =>{
+    it('should add provider to selectedProviders', () => {
+
+      const provider = {
+        id: '1',
+        name: 'John',
+        address: '123 Greenway Blvd',
+        phone: '8991234321'
+      }
+      component.addToSelectedProvider(null, provider);
+
+      expect(component.selectedProviders.length).toEqual(1);
+    });
+
+  });
+
+  describe('Remove provider to  unselectedProviders',() =>{
+    it('should remove provider to unselectedProviders', () => {
+
+      const provider = {
+        id: '1',
+        name: 'John',
+        address: '123 Greenway Blvd',
+        phone: '8991234321'
+      }
+      component.removedFromSelectedProvider(null, provider);
+
+      expect(component.unselectedProviders.length).toEqual(4);
+    });
+    
+  });
+
 });

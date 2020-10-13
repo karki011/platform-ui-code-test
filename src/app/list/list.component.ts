@@ -29,8 +29,43 @@ export class ListComponent implements OnInit {
     }
   ];
 
+  public addToSelectedProvider(event, provider) {
+    // get the index of provider and
+    const providerIndex = this.unselectedProviders.indexOf(provider);
+
+    // add provider to Selected Providers Array
+    this.selectedProviders.push(provider);
+
+    // remove provider to Selected Providers Array
+    this.unselectedProviders.splice(providerIndex, 1);
+
+    this.localStorageUpdate();
+  }
+
+  public removedFromSelectedProvider(event, provider) {
+    const providerIndex = this.selectedProviders.indexOf(provider);
+    this.unselectedProviders.push(provider);
+
+    if (providerIndex >= 0){
+      this.selectedProviders.splice(providerIndex, 1);
+    }
+    this.localStorageUpdate();
+  }
+
+  public localStorageUpdate() {
+    localStorage.setItem('selectedProviders', JSON.stringify(this.selectedProviders));
+    localStorage.setItem('unselectedProviders', JSON.stringify(this.unselectedProviders));
+}
+
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    const local_unselectedProviders = localStorage.getItem('unselectedProviders');
+    const local_selectedProviders   = localStorage.getItem('selectedProviders');
+    this.selectedProviders = JSON.parse(local_selectedProviders);
+    
+    this.unselectedProviders = JSON.parse(local_unselectedProviders)
+
+  }
 
 }
