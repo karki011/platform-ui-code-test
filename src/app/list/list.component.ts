@@ -29,6 +29,18 @@ export class ListComponent implements OnInit {
     }
   ];
   constructor() {}
+
+
+  ngOnInit() {
+    const local_unselectedProviders = localStorage.getItem('unselectedProviders');
+    const local_selectedProviders   = localStorage.getItem('selectedProviders');
+    if (local_unselectedProviders && local_unselectedProviders !== '') {
+      this.unselectedProviders = JSON.parse(local_unselectedProviders);
+    }
+    if (local_selectedProviders && local_selectedProviders !== '') {
+      this.selectedProviders = JSON.parse(local_selectedProviders);
+    }
+  }
   
   public addToSelectedProviders(event, provider) {
     this.selectedProviders.push(provider);
@@ -62,16 +74,5 @@ export class ListComponent implements OnInit {
     localStorage.setItem('unselectedProviders', JSON.stringify(this.unselectedProviders));
   }
 
-
-  ngOnInit() {
-    const local_unselectedProviders = localStorage.getItem('unselectedProviders');
-    const local_selectedProviders   = localStorage.getItem('selectedProviders');
-    if (local_unselectedProviders && local_unselectedProviders !== '') {
-      this.unselectedProviders = JSON.parse(local_unselectedProviders);
-    }
-    if (local_selectedProviders && local_selectedProviders !== '') {
-      this.selectedProviders = JSON.parse(local_selectedProviders);
-    }
-  }
 
 }
