@@ -87,9 +87,9 @@ describe('ListComponent', () => {
     it('should remove a provider from unselectedProviders', () => {
       component.unselectedProviders = [{
         id: '1',
-        name: 'Aritra',
-        address: '123 Stony Blvd',
-        phone: '123123213123'
+        name: 'John',
+        address: '123 Greenway Blvd',
+        phone: '8991234321'
       }];
       const provider = component.unselectedProviders[0];
       component.removeFromUnselectedProviders(provider);
