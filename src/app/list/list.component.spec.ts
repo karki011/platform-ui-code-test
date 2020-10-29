@@ -69,7 +69,7 @@ describe('ListComponent', () => {
     
   });
 
-  describe('Remove provider from electedProviders', () => {
+  describe('Remove provider from SelectedProviders', () => {
     it('should remove a provider from selectedProviders', () => {
       component.selectedProviders = [{
         id: '1',
@@ -83,7 +83,7 @@ describe('ListComponent', () => {
     });
   });
 
-  describe('removeFromunSelectedProviders', () => {
+  describe('Remove from unSelectedProviders', () => {
     it('should remove a provider from unselectedProviders', () => {
       component.unselectedProviders = [{
         id: '1',
@@ -96,5 +96,10 @@ describe('ListComponent', () => {
       expect(component.unselectedProviders.length).toEqual(0);
     });
   });
+  // describe('local update', () => {
+  //   it('should save and update data locally', () => {
+      
+  //   });
+  // });
 
 });
