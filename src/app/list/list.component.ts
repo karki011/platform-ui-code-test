@@ -28,46 +28,50 @@ export class ListComponent implements OnInit {
       phone: '4343219384'
     }
   ];
-
-  public addToSelectedProvider(event, provider) {
-    // get the index of provider and
-    const providerIndex = this.unselectedProviders.indexOf(provider);
-
-    // add provider to Selected Providers Array
+  constructor() {}
+  
+  public addToSelectedProviders(event, provider) {
     this.selectedProviders.push(provider);
-
-    // remove provider to Selected Providers Array
-    this.unselectedProviders.splice(providerIndex, 1);
-
+    this.removeFromUnselectedProviders(provider);
     this.localStorageUpdate();
   }
 
-  public removedFromSelectedProvider(event, provider) {
-    const providerIndex = this.selectedProviders.indexOf(provider);
+  public addToUnselectedProviders(event, provider) {
     this.unselectedProviders.push(provider);
+    this.removeFromSelectedProviders(provider);
+    this.localStorageUpdate();
+  }
 
-    if (providerIndex >= 0){
+  
+  public removeFromUnselectedProviders(provider) {
+    const providerIndex = this.unselectedProviders.indexOf(provider);
+    if (providerIndex >= 0) {
+      this.unselectedProviders.splice(providerIndex, 1);
+    }
+  }
+
+  public removeFromSelectedProviders(provider) {
+    const providerIndex = this.selectedProviders.indexOf(provider);
+    if (providerIndex >= 0) {
       this.selectedProviders.splice(providerIndex, 1);
     }
-    this.localStorageUpdate();
   }
 
   public localStorageUpdate() {
     localStorage.setItem('selectedProviders', JSON.stringify(this.selectedProviders));
     localStorage.setItem('unselectedProviders', JSON.stringify(this.unselectedProviders));
-}
+  }
 
-  constructor() {}
 
   ngOnInit() {
     const local_unselectedProviders = localStorage.getItem('unselectedProviders');
     const local_selectedProviders   = localStorage.getItem('selectedProviders');
     if (local_unselectedProviders && local_unselectedProviders !== '') {
       this.unselectedProviders = JSON.parse(local_unselectedProviders);
-  }
-  if (local_selectedProviders && local_selectedProviders !== '') {
+    }
+    if (local_selectedProviders && local_selectedProviders !== '') {
       this.selectedProviders = JSON.parse(local_selectedProviders);
-  }
+    }
   }
 
 }

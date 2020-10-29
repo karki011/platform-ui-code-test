@@ -10,7 +10,7 @@
           <h3>Name: {{provider.name}}</h3>
           <p>Address: {{provider.address}}</p>
           <p>Phone: {{provider.phone}}</p>
-          <button (click)='addToSelectedProvider($event,provider )' class="btn1" type='button' >Save Provider</button>
+          <button (click)='addToSelectedProviders($event,provider )' class="btn1" type='button' >Save Provider</button>
 
         </div>
       </div>
@@ -26,7 +26,7 @@
           <h3>Name: {{provider.name}}</h3>
           <p>Address: {{provider.address}}</p>
           <p>Phone: {{provider.phone}}</p>
-          <button (click)='removedFromSelectedProvider($event,provider )' class="btn2" type='button' >X</button>
+          <button (click)='addToUnselectedProviders($event,provider )' class="btn2" type='button' >X</button>
         </div>
       </div>
     </div>

@@ -48,8 +48,7 @@ describe('ListComponent', () => {
         address: '123 Greenway Blvd',
         phone: '8991234321'
       }
-      component.addToSelectedProvider(null, provider);
-
+      component.addToSelectedProviders(null, provider);
       expect(component.selectedProviders.length).toEqual(1);
     });
 
@@ -57,18 +56,45 @@ describe('ListComponent', () => {
 
   describe('Remove provider to  unselectedProviders',() =>{
     it('should remove provider to unselectedProviders', () => {
-
-      const provider = {
+      const provider = [{
         id: '1',
         name: 'John',
         address: '123 Greenway Blvd',
         phone: '8991234321'
-      }
-      component.removedFromSelectedProvider(null, provider);
+      }]
+      component.addToUnselectedProviders(null, provider);
 
       expect(component.unselectedProviders.length).toEqual(4);
     });
     
+  });
+
+  describe('Remove provider from electedProviders', () => {
+    it('should remove a provider from selectedProviders', () => {
+      component.selectedProviders = [{
+        id: '1',
+        name: 'John',
+        address: '123 Greenway Blvd',
+        phone: '8991234321'
+      }];
+      const provider = component.selectedProviders[0];
+      component.removeFromSelectedProviders(provider);
+      expect(component.selectedProviders.length).toEqual(0);
+    });
+  });
+
+  describe('removeFromunSelectedProviders', () => {
+    it('should remove a provider from unselectedProviders', () => {
+      component.unselectedProviders = [{
+        id: '1',
+        name: 'Aritra',
+        address: '123 Stony Blvd',
+        phone: '123123213123'
+      }];
+      const provider = component.unselectedProviders[0];
+      component.removeFromUnselectedProviders(provider);
+      expect(component.unselectedProviders.length).toEqual(0);
+    });
   });
 
 });

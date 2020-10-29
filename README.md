@@ -12,7 +12,7 @@ Acceptance Criteria:
 - The state of both lists should be retained when the app is reloaded.
 - Unit tests should be added to cover new functionality.
 
-# Installation
+# **Installation**
 
 - `npm install`
 - `ng serve`
